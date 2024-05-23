@@ -8,6 +8,7 @@ click==8.1.7
 colorama==0.4.6
 cssselect2==0.7.0
 distlib==0.3.7
+dj-database-url==2.1.0
 Django==4.2.7
 django-cors-headers==4.3.1
 django-session-timeout==0.1.0
@@ -35,6 +36,7 @@ six==1.16.0
 soupsieve==2.5
 sqlparse==0.4.4
 tinycss2==1.2.1
+typing_extensions==4.11.0
 tzdata==2023.3
 urllib3==2.1.0
 uuid==1.30
