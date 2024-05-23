@@ -20,7 +20,7 @@ export default function Login() {
       password : password,
     };
     try{
-      const {data} = await axios.post('http://127.0.0.1:8000/api/token/',user,
+      const {data} = await axios.post('http://35.160.120.126/api/token/',user,
         {headers:
           {'Content-Type': 'application/json'},
         }

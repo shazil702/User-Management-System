@@ -19,7 +19,7 @@ const Register = () => {
             password : password,
         };
         try{
-            await axios.post('http://127.0.0.1:8000/api/register/',user)
+            await axios.post('http://35.160.120.126/api/register/',user)
             navigate('/');
         }
         catch(error){
