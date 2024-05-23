@@ -17,7 +17,7 @@ const AdminLogin = () => {
           password : password,
         };
         try{
-          const {data} = await axios.post('http://127.0.0.1:8000/api/admintoken/',user,
+          const {data} = await axios.post('https://user-management-system-gc4s.onrender.com/api/admintoken/',user,
             {headers:
               {'Content-Type': 'application/json'},
             }

@@ -18,7 +18,7 @@ const AdminRegister = () => {
             password : password,
         };
         try{
-            await axios.post('http://127.0.0.1:8000/api/register/',user)
+            await axios.post('https://user-management-system-gc4s.onrender.com/api/register/',user)
             navigate('/admin');
         }
         catch(error){

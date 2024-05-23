@@ -11,13 +11,13 @@ const AdminEdit = () => {
     useEffect(()=> {
         const fetchData = async () => {
             try{
-                const response = await axios.get(`http://127.0.0.1:8000/api/dashboard/${id}/`,{
+                const response = await axios.get(`https://user-management-system-gc4s.onrender.com/api/dashboard/${id}/`,{
                     headers:{
                         'Authorization' : `Bearer ${localStorage.getItem('admin_access_token')}`,
                         'Content-Type' : 'application/json',
                     },
                 })
-                console.log(response.data);
+                
                 if (response.data && response.data.username && response.data.phone){
                     setName(response.data.username);
                     setPhone(response.data.phone);
@@ -37,7 +37,7 @@ const AdminEdit = () => {
             phone : phone,
         }
         try{
-            await axios.put(`http://127.0.0.1:8000/api/dashboard/${id}/`,dataToEdit,{
+            await axios.put(`https://user-management-system-gc4s.onrender.com/api/dashboard/${id}/`,dataToEdit,{
                 headers:{
                     'Authorization' : `Bearer ${localStorage.getItem('admin_access_token')}`,
                     'Content-Type' : 'application/json',

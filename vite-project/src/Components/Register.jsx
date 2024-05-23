@@ -19,7 +19,7 @@ const Register = () => {
             password : password,
         };
         try{
-            await axios.post('http://35.160.120.126/api/register/',user)
+            await axios.post('https://user-management-system-gc4s.onrender.com/api/register/',user)
             navigate('/');
         }
         catch(error){

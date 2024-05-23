@@ -14,7 +14,7 @@ const Admin = () => {
     const [selectedUser, setSelectedUser] = useState(null);
     const handleClose = () => setShow(false);
     const handleShow = (user) => {
-      console.log(user);
+      
       setSelectedUser(user);
       setShow(true);
     }
@@ -27,14 +27,14 @@ const Admin = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const response = await axios.get('http://127.0.0.1:8000/api/dashboard/',{
+                const response = await axios.get('https://user-management-system-gc4s.onrender.com/api/dashboard/',{
                     headers:{
                         'Authorization' :  `Bearer ${localStorage.getItem('admin_access_token')}`,
                         'Content-Type': 'application/json',
                     }
                 })
                 setUsers(response.data);
-                console.log(response.data);
+                
             }catch(error){
                 console.log("Error while fetching data ", error);
             }
@@ -43,7 +43,7 @@ const Admin = () => {
     },[])
     const deleteData = async (id) => {
       try{
-        await axios.delete(`http://127.0.0.1:8000/api/dashboard/${id}/`,{
+        await axios.delete(`https://user-management-system-gc4s.onrender.com/api/dashboard/${id}/`,{
           headers:{
             'Authorization': `Bearer ${localStorage.getItem('admin_access_token')}`,
             'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const Admin = () => {
     useEffect(()=>{
       const searchData = async () => {
         try{
-          const response = await axios.post('http://127.0.0.1:8000/api/search/',{
+          const response = await axios.post('https://user-management-system-gc4s.onrender.com/api/search/',{
             word:word
           },{
             headers:{
@@ -67,7 +67,7 @@ const Admin = () => {
             }
           })
           setUsers(response.data)
-          console.log(response.data);
+          
         }catch(error){
           console.log("error while searching ",error);
         }
