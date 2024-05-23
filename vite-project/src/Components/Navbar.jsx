@@ -20,6 +20,8 @@ const Navbar = () => {
       {isLogedIn?  <button className="float-right m-4 h-8 w-20 text-center bg-gray-700 hover:bg-gray-900 text-white rounded" onClick={Logout}> Logout</button> :
      <button className="float-right m-4 h-8 w-20 text-center bg-gray-700 hover:bg-gray-900 text-white rounded"> <Link to={'/'} >Login</Link></button> 
     }
+    
+
     </nav>
     )
 }

@@ -65,6 +65,9 @@ export default function Login() {
                     <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                         Don’t have an account yet? <a href="#" className="font-medium text-blue-600 hover:underline dark:text-blue-500"><Link to={'/register'}> Sign up</Link></a>
                     </p>
+                    
+                       <a href="#" className="font-medium text-blue-600 hover:underline dark:text-blue-500"><Link to={'/adminLogin'}> Admin ?</Link></a>
+                    
                 </form>
             </div>
         </div>
