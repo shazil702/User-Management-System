@@ -17,10 +17,12 @@ djangorestframework==3.15.1
 djangorestframework-simplejwt==5.3.1
 filelock==3.13.1
 fonttools==4.45.0
+gunicorn==22.0.0
 html5lib==1.1
 idna==3.4
 jovian==0.2.47
 lxml==4.9.3
+packaging==24.0
 Pillow==10.1.0
 pipenv==2023.11.15
 platformdirs==3.11.0
