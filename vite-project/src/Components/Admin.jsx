@@ -4,10 +4,20 @@ import {Button, Table} from "flowbite-react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import  Modal  from "react-bootstrap/Modal";
+// import  Button  from "react-bootstrap/Button";
 const Admin = () => {
+  console.log("check");
     const [users, setUsers] = useState([]);
     const [word, setWord] = useState('');
-
+    const [show, setShow] = useState(false);
+    const [selectedUser, setSelectedUser] = useState(null);
+    const handleClose = () => setShow(false);
+    const handleShow = (user) => {
+      console.log(user);
+      setSelectedUser(user);
+      setShow(true);
+    }
     const [showData , setShowData] = useState(false)
     useEffect(()=>{
         if (localStorage.getItem('admin_access_token') !== null) {
@@ -40,6 +50,7 @@ const Admin = () => {
           },
         });
         setUsers(users.filter((data) => data.id !== id));
+        setShow(false)
       }catch(error){
         console.log("Error while deleting ", error);
       }
@@ -63,7 +74,21 @@ const Admin = () => {
       }
       searchData();
     },[word])
-if (showData){
+    if (show){
+      return(
+       <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Are you sure?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>You want to Delete User "{selectedUser.username}"</Modal.Body>
+          <Modal.Footer>
+            <button className="bg-black hover:bg-gray-800 text-white m-4 h-10 w-24 rounded" onClick={handleClose}>No</button>
+            <button className="bg-red-700 hover:bg-red-500 m-4 h-10 w-24" onClick={() => deleteData(selectedUser.id)}>Yes</button>
+          </Modal.Footer>
+        </Modal>
+      
+        )}
+    if (showData){
     return(
         <div className="overflow-x-auto">
           <div className="flex justify-between items-center m-4">
@@ -103,9 +128,10 @@ if (showData){
         <Table.Body className="divide-y">
           {users.map((user) => (
           <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-            <Table.Cell className="p-4 cursor-pointer" onClick={() => deleteData(user.id)}>
+            <Table.Cell className="p-4 cursor-pointer" onClick={() => handleShow(user)}>
               ❌
             </Table.Cell>
+          
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
               {user.id}
             </Table.Cell>
@@ -122,9 +148,13 @@ if (showData){
      
         </Table.Body>
       </Table>
+    
         </div>
     )
   }
+ 
+
+  
   return(
     <section className="bg-gray-900 dark:bg-gray-900 h-">
          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">

@@ -6,6 +6,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import generics,status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.shortcuts import get_object_or_404
+from rest_framework.exceptions import ValidationError
 
 class MyTokenView(TokenObtainPairView):
     serializer_class = MyToken
@@ -46,8 +47,14 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
     def post(self, request, *args, **kwargs):
         print(request.data)
-        response = super().post(request, *args, **kwargs)
-        return response
+        email = request.data['email']
+        if User.objects.filter(email=email).exists():
+            return Response({'email':"Email already exists "}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            response = super().post(request, *args, **kwargs)
+            return response
+        except ValidationError as e:
+             return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 def getRoutes(request):

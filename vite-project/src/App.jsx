@@ -12,13 +12,12 @@ import AdminRegister from './Components/AdminRegister';
 
 function App() {
   
-  const [isAuth,setIsAuth] = useState(false);
   return (
    <div className='App'>
     <BrowserRouter>
-    <Navbar setAuth={setIsAuth}/>
+    <Navbar/>
     <Routes>
-      <Route path='/' element={<Login setIsAuth={setIsAuth}/>}/>
+      <Route path='/' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/home' element={<Home/>}/>
       <Route path='/adminLogin' element={<AdminLogin/>}/>

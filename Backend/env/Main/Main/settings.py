@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -83,13 +84,15 @@ WSGI_APPLICATION = 'Main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'restapi',
-        'USER': 'postgres',
-        'PASSWORD': '8129',
-        'HOST': 'localhost',
+        'NAME': 'shazildb',
+        'USER': 'shazildb_user',
+        'PASSWORD': 'gJn5KeGgaGSSWOH3sj9yy9TkxRQUZZg4',
+        'HOST': 'dpg-cp7cuu6d3nmc73bpbijg-a',
         'PORT': '5432'
     }
 }
+
+DATABASES["default"] = dj_database_url.parse("postgres://shazildb_user:gJn5KeGgaGSSWOH3sj9yy9TkxRQUZZg4@dpg-cp7cuu6d3nmc73bpbijg-a.oregon-postgres.render.com/shazildb")
 
 
 # Password validation
