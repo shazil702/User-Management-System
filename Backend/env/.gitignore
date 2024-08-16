@@ -3,3 +3,4 @@ pyvenv.cfg
 migrations
 __pycache__
 .env
+Scripts
