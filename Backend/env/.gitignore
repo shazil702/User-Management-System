@@ -1,4 +1,5 @@
-/Lib
+Lib
 pyvenv.cfg
 migrations
 __pycache__
+.env
