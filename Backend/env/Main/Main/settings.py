@@ -59,14 +59,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': config('DB_Name'),
-        'USER': 'shazildb_user',
-        'PASSWORD': 'gJn5KeGgaGSSWOH3sj9yy9TkxRQUZZg4',
-        'HOST': 'dpg-cp7cuu6d3nmc73bpbijg-a',
+        'USER': config('DB_User'),
+        'PASSWORD': config('DB_Password'),
+        'HOST': config('DB_Host'),
         'PORT': '5432'
     }
 }
 
-DATABASES["default"] = dj_database_url.parse("postgres://shazildb_user:gJn5KeGgaGSSWOH3sj9yy9TkxRQUZZg4@dpg-cp7cuu6d3nmc73bpbijg-a.oregon-postgres.render.com/shazildb")
+DATABASES["default"] = dj_database_url.parse(config('DB_Url'))
 
 AUTH_PASSWORD_VALIDATORS = [
     {
